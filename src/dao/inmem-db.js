@@ -5,7 +5,7 @@
 // De database heeft twee methoden: get en add.
 // Opdracht: Voeg de overige methoden toe.
 //
-const database = {
+let database = {
     // het array met dummy records. Dit is de 'database'.
     _data: [
         {
@@ -60,9 +60,24 @@ const database = {
             // met het toegevoegde item als argument, of null als er een fout is opgetreden
             callback(null, item)
         }, this._delayTime)
-    }
+    },
 
     // Voeg zelf de overige database functionaliteit toe
+    deleteById(id, callback) {
+        // Simulate an asynchronous operation
+        setTimeout(() => {
+            if (id < 0 || id >= this._data.length) {
+                callback({ message: `Error: id ${id} does not exist!` }, null)
+            } else {
+                this._data.splice(id)
+                this._data = this._data.filter(user => user.id !== id)
+                callback(null, { message: `User with ID ${id} deleted successfully` })
+            }
+        }, this._delayTime)
+    }
+    
+
+
 }
 
 module.exports = database
