@@ -1,3 +1,4 @@
 {
-    "rewrites": [{"source": "/(.*)" , "destination": "/API"}]
+    "rewrites": [{"source": "/(.*)" , "destination": "/API"}],
+    "public": "dist"
 }
